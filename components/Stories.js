@@ -13,6 +13,7 @@ const Stories = () => {
         }));
 
         setSuggestions(suggestions);
+        // didnt do much today
     }, [])
   return (
     <div>
