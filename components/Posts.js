@@ -14,7 +14,14 @@ const Posts = () => {
     <div>
         {posts.map(post => {
 
-        <Post />
+        <Post 
+        key={post.id}
+          id={post.id}
+          username={post.username}
+          userImg={post.userImg}
+          img={post.img}
+          caption={post.caption}
+        />
         })}
     </div>
   )
