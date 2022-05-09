@@ -12,7 +12,7 @@ const Posts = () => {
     ]
   return (
     <div>
-        {posts.map(post => {
+        {posts.map(post => (
 
         <Post 
         key={post.id}
@@ -22,7 +22,7 @@ const Posts = () => {
           img={post.img}
           caption={post.caption}
         />
-        })}
+        ))}
     </div>
   )
 }
