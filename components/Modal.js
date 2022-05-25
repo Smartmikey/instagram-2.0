@@ -33,7 +33,7 @@ const Modal = () => {
     const uploadPost = async () => {
         if (loading) return;
 
-        setSelectedFile(true);
+        setLoading(true);
 
         const docRef = await addDoc(collection(db, "posts"), {
             username: session.user.username,
@@ -135,7 +135,7 @@ const Modal = () => {
                             focus:ring-offset-2 focus:ring-red-500 sm:text-sm hover:disabled:bg-gray-300 disabled:bg-gray-300 
                             disabled:cursor-not-allowed
                             "
-                            onClick={()=> uploadPost}
+                            onClick={()=> uploadPost()}
                             >
                                {
                                    loading? "Upolading ..." : "Upload post"
