@@ -9,21 +9,35 @@ import {
  } from "@heroicons/react/outline";
 
  import { HomeIcon } from "@heroicons/react/solid";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { modalState } from "../Atoms/ModalAtom";
 
 export const Header = () => {
+    const {data: session, status} = useSession()
+    const router = useRouter()
+
+    const [open, setOpen] = useRecoilState(modalState)
+
+    console.log("1")
+
   return (
       <div className="shadow-sm bg-white sticky top-0 z-50 ">
 
     
     <div className="flex items-center justify-between  max-w-6xl mx-5 lg:mx-auto">
         {/* left */}
-        <div className="relative w-24 h-24 justify-between hidden lg:inline-grid">
+        <div onClick={()=>router.push("/")}>
+
+        <div className="relative w-24 h-24 cursor-pointer justify-between hidden lg:inline-grid">
             <Image layout="fill" objectFit="contain" src="https://links.papareact.com/ocw" />
 
         </div>
         <div className="relative  w-10 h-10 flex-shrink-0 cursor-pointer lg:hidden">
             <Image layout="fill" objectFit="contain" className="" src="https://links.papareact.com/jjm" />
 
+        </div>
         </div>
         {/* middle */}
 
@@ -40,18 +54,26 @@ export const Header = () => {
         
         {/* right */}
         <div className="flex justify-end space-x-4 items-center">
-        <HomeIcon className="navBtn" />
+        <HomeIcon onClick={()=>router.push("/")} className="navBtn" />
         <MenuIcon className="h-6 md:hidden" />
-        <div className="relative navBtn">
+
+        {session ? (
+            <>
+             <div className="relative navBtn">
             <PaperAirplaneIcon className="navBtn rotate-45" />
             <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full justify-center items-center flex animate-pulse text-white">3</div>
         </div>
-        <PlusCircleIcon className="navBtn" />
+        <PlusCircleIcon onClick={()=> setOpen(!open)} className="navBtn" />
         <UserGroupIcon className="navBtn" />
         <HeartIcon className="navBtn" />
-        <img src="/my-image.jpeg"
+        <img src={session?.user?.image} onClick={()=>signOut()}
             className="h-10 rounded-full cursor-pointer"
         />
+            </>
+        ) :(
+            <button className="" onClick={()=>signIn()}>Sign In</button>
+        )}
+       
         </div>
     </div>
     </div>
