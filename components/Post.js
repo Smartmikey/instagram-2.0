@@ -13,6 +13,7 @@ import { addDoc, collection, onSnapshot, orderBy, deleteDoc, setDoc, query, doc,
 import { db } from "../firebase";
 import Moment from "react-moment";
 
+
 const Post = ({img, id, username, caption, userImg }) => {
   const {data: session} = useSession()
   const [comments, setComments] = useState("")
@@ -120,6 +121,7 @@ const Post = ({img, id, username, caption, userImg }) => {
         {
           session && <form  className="flex items-center p-4">
           <EmojiHappyIcon className="h-7" />
+
           <input onChange={(e)=> setComment(e.target.value)} value={comment}  type="text" placeholder="Add a comment..." className="border-none flex-1 focus:ring-0 outline-none" />
           <button disabled={!comment.trim()} onClick={(e)=> sendComment(e)} type="submit" className="font-semibold text-blue-500">Post</button>
         </form>

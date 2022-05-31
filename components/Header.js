@@ -13,6 +13,10 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState } from "../Atoms/ModalAtom";
+import { FaFacebookMessenger } from "react-icons/fa";
+import { BsPlusSquare } from "react-icons/bs";
+import { IoNavigateCircleSharp,  } from "react-icons/io5";
+
 
 export const Header = () => {
     const {data: session, status} = useSession()
@@ -30,7 +34,7 @@ export const Header = () => {
         {/* left */}
         <div onClick={()=>router.push("/")}>
 
-        <div className="relative w-24 h-24 cursor-pointer justify-between hidden lg:inline-grid">
+        <div className="relative w-24 h-16 cursor-pointer justify-between hidden lg:inline-grid">
             <Image layout="fill" objectFit="contain" src="https://links.papareact.com/ocw" />
 
         </div>
@@ -60,11 +64,11 @@ export const Header = () => {
         {session ? (
             <>
              <div className="relative navBtn">
-            <PaperAirplaneIcon className="navBtn rotate-45" />
+            <FaFacebookMessenger size={20} className="navBtn" />
             <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full justify-center items-center flex animate-pulse text-white">3</div>
         </div>
-        <PlusCircleIcon onClick={()=> setOpen(!open)} className="navBtn" />
-        <UserGroupIcon className="navBtn" />
+        <BsPlusSquare size={20} onClick={()=> setOpen(!open)} className="navBtn" />
+        <IoNavigateCircleSharp size={20} className="navBtn" />
         <HeartIcon className="navBtn" />
         <img src={session?.user?.image} onClick={()=>signOut()}
             className="h-10 rounded-full cursor-pointer"
