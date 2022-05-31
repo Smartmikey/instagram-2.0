@@ -25,7 +25,7 @@ const Posts = () => {
       console.log(snapshot.docs);
       setPosts(snapshot.docs);
     })
-    , []);
+    , [db]);
     
   return (
     <div>
