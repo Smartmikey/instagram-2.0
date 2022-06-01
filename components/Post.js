@@ -78,7 +78,7 @@ const Post = ({img, id, username, caption, userImg }) => {
           <HeartIcon className="btn" onClick={likePost}/>
             )}
           <ChatIcon className="btn" />
-          <PaperAirplaneIcon className="btn" />
+          <PaperAirplaneIcon className="btn rotate-45" />
         </div>
         <BookmarkIcon className="btn" />
         </div>

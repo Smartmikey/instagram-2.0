@@ -7,7 +7,7 @@ const signIn = ({providers}) => {
 
     <div className="flex flex-col items-center justify-center min-h-screen py-2 -mt-56 px-14 text-center">
         <img className="w-80" src="https://links.papareact.com/ocw" />
-        <p className="text-xs italic">This is not a real app, just for test a test of ability and eeducational purpose</p>
+        <p className="text-xs italic">This is not a real app, just for a test of ability and eeducational purpose</p>
         <div className="mt-40">
 
             {
