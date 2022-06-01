@@ -59,7 +59,7 @@ export const Header = () => {
         {/* right */}
         <div className="flex justify-end space-x-4 items-center">
         <HomeIcon onClick={()=>router.push("/")} className="navBtn" />
-        <MenuIcon className="h-6 md:hidden" />
+        <MenuIcon className="h-10 md:hidden" />
 
         {session ? (
             <>
@@ -75,7 +75,7 @@ export const Header = () => {
         />
             </>
         ) :(
-            <button className="" onClick={()=>signIn()}>Sign In</button>
+            <button className="min-w-fit" onClick={()=>signIn()}>Sign In</button>
         )}
        
         </div>
